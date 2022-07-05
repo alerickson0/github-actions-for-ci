@@ -20,6 +20,7 @@ on:
         required: true
         options:
         - ${GITHUB_SHA}
+        - ${{ github.sha }}
         - "123456"
       major_version:
         description: 'Major version of the release'
