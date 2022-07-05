@@ -18,10 +18,7 @@ on:
       release_sha:
         description: 'SHA to build the release'
         required: true
-        options:
-        - ${GITHUB_SHA}
-        - ${{ github.sha }}
-        - "123456"
+        default: ${GITHUB_SHA}
       major_version:
         description: 'Major version of the release'
         default: '1'
