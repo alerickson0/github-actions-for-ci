@@ -15,6 +15,12 @@ on:
         default: 'World'
         # Input has to be provided for the workflow to run
         required: true
+      release_sha:
+        description: 'SHA to build the release'
+        required: true
+        options:
+        - ${GITHUB_SHA}
+        - "123456"
       major_version:
         description: 'Major version of the release'
         default: '1'
