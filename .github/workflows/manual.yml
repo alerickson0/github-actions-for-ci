@@ -61,6 +61,7 @@ jobs:
     needs: greet
     if: ${{ needs.greet.outputs.my_var }}
     strategy:
+      max-parallel: 6
       matrix: ${{ fromJson(needs.greet.outputs.matrix) }}
       fail-fast: true
     steps:
