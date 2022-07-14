@@ -46,3 +46,17 @@ jobs:
       run: echo "Hello ${{ github.event.inputs.name }}"
     - name: Say release number
       run: echo "The release version is ${{ github.event.inputs.major_version }}.${{ github.event.inputs.minor_version }}.${{ github.event.inputs.patch_version }}"
+    - name: Set variable value
+      id: set_var_value
+      shell: bash
+      run: |
+        var1=false
+
+        echo "::set-output name=my_var::$var1"
+  try-this:
+    runs-on: ubuntu-latest
+    needs: greet
+    if: ${{ needs.greet.outputs.my_var }}
+    steps:
+      - name: Send a message
+        run: echo "We got to the try-this job!!!"
