@@ -60,6 +60,7 @@ jobs:
         matrix="{\"paths\":[]}"
         echo "::set-output name=my_var::$var1"
         echo "matrix = ${matrix}"
+        echo "var1 = $var1"
         echo "::set-output name=matrix::${matrix}"
   try-this:
     runs-on: ubuntu-latest
@@ -68,7 +69,7 @@ jobs:
     strategy:
       max-parallel: 6
       matrix: ${{ fromJson(needs.greet.outputs.matrix) }}
-      fail-fast: true
+      fail-fast: false
     steps:
       - name: Send a message
         run: echo "We got to the try-this job!!!"
