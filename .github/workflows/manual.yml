@@ -62,6 +62,7 @@ jobs:
     if: ${{ needs.greet.outputs.my_var }}
     strategy:
       matrix: ${{ fromJson(needs.greet.outputs.matrix) }}
+      fail-fast: true
     steps:
       - name: Send a message
         run: echo "We got to the try-this job!!!"
