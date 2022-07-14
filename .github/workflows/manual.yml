@@ -51,12 +51,17 @@ jobs:
       shell: bash
       run: |
         var1=false
+        matrix="{\"paths\":[]}"
 
         echo "::set-output name=my_var::$var1"
+        echo "matrix = ${matrix}"
+        echo "::set-output name=matrix::${matrix}"
   try-this:
     runs-on: ubuntu-latest
     needs: greet
     if: ${{ needs.greet.outputs.my_var }}
+    strategy:
+      matrix: ${{ fromJson(needs.greet.outputs.matrix) }}
     steps:
       - name: Send a message
         run: echo "We got to the try-this job!!!"
