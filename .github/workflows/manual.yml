@@ -17,8 +17,8 @@ on:
         required: true
       release_sha:
         description: 'SHA to build the release'
-        required: true
-        default: ${{ github.sha }}
+        required: false
+        default: 'abc456'
       major_version:
         description: 'Major version of the release'
         default: '1'
